@@ -16,6 +16,7 @@
     self.backgroundColor = _baseColor;
     _highlightColor = [UIColor colorWithRed:1.0 green:0.8 blue:0.0 alpha:1.0];
     _numberOfStar = 5;
+    _minimumValue = 0;
     _stepInterval = 0.0;
   }
   return self;
@@ -153,7 +154,10 @@
   if (_stepInterval != 0.0) {
     value = roundf(value / _stepInterval) * _stepInterval;
   }
-  [self setValue:value];
+  if(value >= _minimumValue){
+    [self setValue:value];
+  }
+  
 }
 
 @end
